@@ -1,7 +1,7 @@
 import styles from "./TweetBox.module.scss";
 import { Box } from "@mui/material";
 
-export const TweetBox = (message: string) => {
+export const TweetBox = (message: string | undefined) => {
     return (
       <Box className={styles.container}>
           <Box className={styles.whitebox}>

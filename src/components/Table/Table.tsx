@@ -114,6 +114,7 @@ export const Table = () => {
     );
   }
 
+  // array
   const message = [
     "Hello",
     "How are you?",
@@ -121,6 +122,15 @@ export const Table = () => {
     "I love weekends!",
     "Goody Moody"
 ]
+
+  // map
+  const tweet = new Map([
+    ["m0", "hi"],
+    ['m1', 'hello'],
+    ['m2', 'chao'],
+    ['m3', 'hola'],
+    ['m4', 'hey'],
+  ])
 
   return userType != EsgUserType.ESG_NONE ? (
     <>
@@ -138,11 +148,28 @@ export const Table = () => {
         />
       )}
 
-      {TweetBox(message[0])}
+      {/* TODO: iterate 5 times to render different tweet messages */}
+
+      {/* {for (let i = 0; i < message.length; i++) {
+        {TweetBox(message[i])}
+      }} */}
+
+      {/* {TweetBox(message[0])}
       {TweetBox(message[1])}
       {TweetBox(message[2])}
       {TweetBox(message[3])}
-      {TweetBox(message[4])}
+      {TweetBox(message[4])} */}
+
+      {tweet.forEach((value, key) => {
+        {TweetBox(tweet.get(key))}
+        
+      })}
+
+      {TweetBox(tweet.get("m0"))}
+      {TweetBox(tweet.get("m1"))}
+      {TweetBox(tweet.get("m2"))}
+      {TweetBox(tweet.get("m3"))}
+      {TweetBox(tweet.get("m4"))}
 
       {/* {
         <UiTable
