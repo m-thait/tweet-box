@@ -1,0 +1,83 @@
+@import "src/styles/vars.module";
+
+%flex-container {
+  align-items: center;
+  display: flex;
+  flex: 1 1 auto;
+  gap: 4px;
+}
+
+.reverse {
+  flex-direction: row-reverse;
+}
+
+.cellContainer {
+  @extend %flex-container;
+  justify-content: space-between;
+  width: 100%;
+
+  .textContainer {
+    @extend %flex-container;
+    width: 0;
+
+    .text {
+      -webkit-box-orient: vertical; /* stylelint-disable-line value-no-vendor-prefix */
+      color: $global-black;
+      display: -webkit-box; /* stylelint-disable-line value-no-vendor-prefix */
+      font-family: $font-family-narrow;
+      font-size: $font-size-14;
+      font-weight: $font-weight-medium;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
+    }
+
+    .rightAlign {
+      text-align: right;
+    }
+
+    .sortContainer {
+      @extend %flex-container;
+    }
+
+    .sortIcon {
+      font-size: $font-size-18;
+      padding: 1px;
+    }
+  }
+
+  .icon {
+    border-radius: $icon-border-radius;
+
+    svg {
+      color: rgba($global-blue-700, 0.6);
+      font-size: $font-size-20;
+    }
+  }
+
+  .menuContainer {
+    height: 32px;
+    width: 32px;
+  }
+
+  .autoWidth {
+    width: auto;
+  }
+
+  .divider {
+    background: $global-black;
+    border-right-width: 1px;
+    height: 14px;
+    margin-left: 4px;
+  }
+
+  .rowCount {
+    color: $global-black;
+    font-size: $font-size-14;
+    font-weight: $font-weight-medium;
+    margin-left: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

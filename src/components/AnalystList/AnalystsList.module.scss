@@ -1,0 +1,18 @@
+@import "~@moodys/mdc-frontend.theming.colors/index.module";
+@import "~@moodys/mdc-frontend.theming.fonts/typography.module";
+@import "src/styles/vars.module";
+
+.analystContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  min-width: 850px;
+}
+
+.sectionTitle {
+  width: 200px;
+}
+
+.sectionContent {
+  width: 100%;
+}

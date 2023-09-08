@@ -1,0 +1,10 @@
+@import "~@moodys/mdc-frontend.theming.colors/index.module";
+@import "~@moodys/mdc-frontend.theming.fonts/typography.module";
+@import "src/styles/vars.module";
+
+.companyContentContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  min-width: 850px;
+}

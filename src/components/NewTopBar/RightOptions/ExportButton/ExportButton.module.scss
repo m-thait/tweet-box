@@ -1,0 +1,62 @@
+@import "~@moodys/mdc-frontend.theming.fonts/typography.module";
+@import "~@moodys/mdc-frontend.theming.colors/index.module";
+@import "src/styles/vars.module";
+
+.exportPopover {
+  pointer-events: none;
+
+  > div {
+    background: transparent;
+    max-width: 300px;
+  }
+
+  .childContainer {
+    align-items: center;
+    background: rgba($global-black, 0.9);
+    color: $global-white;
+    display: flex;
+    justify-content: center;
+
+    p {
+      font-size: $font-size-14;
+      font-weight: $font-weight-regular;
+      margin: 0;
+      padding: 0.25rem 0.5rem;
+    }
+  }
+
+  .disabledMessage {
+    align-items: flex-start;
+    display: flex;
+    gap: 0.25rem;
+    padding: 0.25rem;
+
+    > svg {
+      font-size: $font-size-17;
+      margin-left: 0.25rem;
+      margin-top: 0.5rem;
+    }
+  }
+}
+
+.SnackBarIcon {
+  path {
+    fill: $global-red-500;
+  }
+}
+
+.SnackBar {
+  > div {
+    background: linear-gradient(
+        0deg,
+        rgb(255 255 255 / 0.9),
+        rgb(255 255 255 / 0.9)
+      ),
+      $global-red-500 !important; // stylelint-disable-line declaration-no-important
+    color: $global-red-700;
+
+    path {
+      fill: $global-red-700;
+    }
+  }
+}

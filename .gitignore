@@ -1,0 +1,26 @@
+# Dependencies
+node_modules
+junit.xml
+
+# Environments
+.env
+.DS_Store
+
+# IDE
+.idea
+.vscode
+
+# Testing
+/cypress/videos
+/cypress/screenshots
+/cypress/reports
+/cypress/downloads
+/testing/dlt/dashboard
+/coverage
+
+# QA Test
+/testing/dlt/dashboard
+
+# production
+build
+*.tsbuildinfo

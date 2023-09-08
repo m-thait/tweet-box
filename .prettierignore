@@ -1,0 +1,19 @@
+node_modules
+public/assets
+
+# All dot files can be left alone
+.*
+
+# auto generated files should be ignored
+package.json
+package-lock.json
+
+# don't lint build output (make sure it's set to your correct build folder name)
+build
+
+# don't lint test coverage folder
+coverage
+testing/reports
+
+# Avo
+Avo.ts

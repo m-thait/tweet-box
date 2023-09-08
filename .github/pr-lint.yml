@@ -1,0 +1,5 @@
+projects: ['MDCPT', 'mdcpt', 'DID', 'did']
+check_title: true
+check_branch: false
+check_commits: false
+ignore_case: true

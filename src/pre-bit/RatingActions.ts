@@ -1,0 +1,18 @@
+export enum RatingActions {
+  NEW = "new",
+  UPGRADE = "upgrade",
+  DOWNGRADE = "downgrade",
+  AFFIRMATION = "affirmation",
+  CONFIRMATION = "confirmation",
+  POSSIBLE_UPGRADE = "on watch - possible upgrade",
+  POSSIBLE_DOWNGRADE = "on watch - possible downgrade",
+  DIRECTION_UNCERTAIN = "on watch - direction uncertain",
+  REINSTATED = "reinstated",
+  CHANGE_TO_DEFINITIVE = "change to definitive from prospective",
+  WITHDRAWN = "withdrawn",
+  RATING_ADJUSTMENT = "rating adjustment",
+  CHANGE_IN_SCALE = "other - change in scale",
+  MODIFIED_RATING_NOTATION = "other - modified rating notation",
+  REFINEMENT = "other - refinement",
+  NEW_ORIGINAL_MECHANICS = "other - new (original mechanics)",
+}

@@ -1,0 +1,52 @@
+@import "~@moodys/mdc-frontend.theming.colors/index.module";
+@import "~@moodys/mdc-frontend.theming.fonts/typography.module";
+
+$dot-border-radius: 50%;
+
+.container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-width: 0;
+
+  .dot {
+    background-color: rgba($global-cyan-500, 0.5);
+    border-radius: $dot-border-radius;
+    display: inline-block;
+    height: 8px;
+    left: 8px;
+    position: absolute;
+    width: 8px;
+  }
+
+  .lockContainer {
+    align-items: center;
+    display: flex;
+    min-width: 0;
+  }
+
+  .textContainer {
+    overflow: hidden;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .underline {
+    text-decoration: underline;
+  }
+
+  .hyperlink {
+    color: $global-brand-moodys-blue;
+    cursor: pointer;
+  }
+
+  .fontWeight500 {
+    font-weight: $font-weight-medium;
+  }
+}
+
+.menu {
+  justify-content: flex-end;
+  left: 6px;
+}

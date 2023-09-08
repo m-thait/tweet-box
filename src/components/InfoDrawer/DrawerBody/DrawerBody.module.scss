@@ -1,0 +1,88 @@
+@import "src/styles/vars.module";
+@import "~@moodys/mdc-frontend.theming.colors/index.module";
+@import "~@moodys/mdc-frontend.theming.fonts/typography.module";
+
+%medium-font {
+  font-size: $font-size-14;
+  font-weight: $font-weight-regular;
+}
+
+.accordionWrapper {
+  box-shadow: none;
+}
+
+.accordionSummary {
+  background: $global-gray-100;
+  min-height: 36px;
+}
+
+.accordionBar {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 8px;
+}
+
+.accordionTitleWrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.accordionTitle {
+  font-size: $font-size-14;
+  font-weight: $font-weight-semi-bold;
+}
+
+.accordionDescription {
+  @extend %medium-font;
+  align-self: center;
+  font-weight: $font-weight-medium;
+  margin-left: 14px;
+}
+
+.accordionContent {
+  font-size: $font-size-14;
+}
+
+.sectionContainer {
+  margin-bottom: 30px;
+
+  p {
+    @extend %medium-font;
+    line-height: 150%;
+    margin-top: 8px;
+    overflow-wrap: break-word;
+  }
+}
+
+.sectionTitle > p,
+.sectionTitle > p > b {
+  font-size: $font-size-18;
+  font-weight: $font-weight-semi-bold;
+}
+
+.bigScore {
+  font-size: $font-size-44;
+  font-weight: $font-weight-semi-bold;
+}
+
+.analystTitle {
+  color: $global-gray-600;
+  font-size: $font-size-20;
+}
+
+.scoreDescription {
+  font-size: $font-size-18;
+  font-weight: $font-weight-semi-bold;
+  margin: 8px 0;
+}
+
+.scoreBox {
+  margin-bottom: 30px;
+}
+
+.drawerBackdrop {
+  background-color: transparent;
+}

@@ -1,0 +1,41 @@
+@import "src/styles/vars.module";
+
+$icon-border-radius: 2px;
+
+.nestedWrapper {
+  align-items: center;
+  display: flex;
+
+  :global(.MuiSvgIcon-root) {
+    height: 16px;
+    width: 16px;
+  }
+}
+
+.removeIcon {
+  background: rgba($global-blue-700, 0.6);
+  border-radius: $icon-border-radius;
+  color: $global-white;
+}
+
+.addIcon {
+  background: rgba($global-blue-700, 0.1);
+  border-radius: $icon-border-radius;
+  color: rgba($global-blue-700, 0.4);
+}
+
+.headerBracket {
+  width: 100%;
+
+  &::after {
+    border-right: 1px solid rgba($global-blue-700, 0.26);
+    border-top: 1px solid rgba($global-blue-700, 0.26);
+    border-top-right-radius: 3px;
+    content: "";
+    display: inline-block;
+    height: 8px;
+    margin-top: 5px;
+    vertical-align: sub;
+    width: 90%;
+  }
+}

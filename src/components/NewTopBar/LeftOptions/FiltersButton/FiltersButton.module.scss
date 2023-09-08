@@ -1,0 +1,37 @@
+@import "~@moodys/mdc-frontend.theming.fonts/typography.module";
+@import "~@moodys/mdc-frontend.theming.colors/index.module";
+@import "src/styles/vars.module";
+
+.filterButton {
+  button {
+    background: $global-blue-700;
+    border-color: $global-blue-700;
+    color: $global-white;
+    height: 32px;
+    min-width: 0;
+    padding: 6px 12px;
+
+    &:hover {
+      background: $global-blue-800;
+      border-color: $global-blue-800;
+    }
+
+    &:active {
+      background: $global-blue-600;
+      border-color: $global-blue-600;
+    }
+
+    svg {
+      color: $global-white;
+      font-size: $font-size-17;
+    }
+  }
+
+  span > span {
+    border: 1.5px solid $global-white;
+    font-weight: $font-weight-semi-bold;
+    height: 18px;
+    padding: 0 6px;
+    width: 22px;
+  }
+}

@@ -1,0 +1,14 @@
+@import "src/styles/vars.module";
+
+.container {
+  margin-right: 2rem;
+}
+
+.tab {
+  min-width: unset;
+  padding: 6px 16px;
+}
+
+.pointer {
+  cursor: pointer;
+}

@@ -1,0 +1,28 @@
+name: package.json synchronizer to S3 bucket
+on:
+  push:
+    branches:
+      - "main"
+    paths:
+      - 'package.json'
+
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: read # This is required for actions/checkout
+
+jobs:
+  package-json-synchronizer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::679432966719:role/lobadmin-managed-github-action
+          aws-region: us-east-1
+
+      - name: Upload file to S3
+        run: |
+          aws s3 cp package.json s3://mdc-dev-pipelines-useast1/${{ github.event.repository.name }}/package.json

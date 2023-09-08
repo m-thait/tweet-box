@@ -1,0 +1,19 @@
+{
+  "extends": "@moodys/mdc-config.frontend.tsconfig/dist/tsconfig.base.json",
+  "include": ["src/**/*", "webpack.config.ts"],
+  "exclude": ["node_modules", "build", "coverage"],
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "rootDirs": ["./src", "./cypress"],
+    "paths": {
+      "@hooks/*": ["./hooks/*"],
+      "@utils/*": ["./utils/*"],
+      "@views/*": ["./views/*"],
+      "@components/*": ["./components/*"],
+      "@constants/*": ["./constants/*"],
+      "@services/*": ["./services/*"],
+      "@models/*": ["./models/*"],
+      "@root/*": ["../*"]
+    }
+  }
+}

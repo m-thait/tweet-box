@@ -1,0 +1,86 @@
+@import "~@moodys/mdc-frontend.theming.fonts/typography.module";
+@import "~@moodys/mdc-frontend.theming.colors/index.module";
+@import "src/styles/vars.module";
+
+%flex-container {
+  align-items: center;
+  display: flex;
+}
+
+%filter-font-family {
+  font-family: $font-family;
+  font-size: $font-size-13;
+}
+
+.toolBarContainer {
+  @extend %flex-container;
+  background: $global-white;
+  flex: 1 1 auto;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 17px 24px 15px;
+}
+
+/* Left container styles */
+.leftContainer,
+.rightContainer {
+  @extend %flex-container;
+
+  .divider {
+    border-width: 1px;
+    margin: 12px 0;
+  }
+
+  .buttonFocused {
+    background: rgba($global-blue-700, 0.12);
+  }
+}
+
+/* Right container styles */
+.rightContainer {
+  flex-direction: row-reverse;
+  gap: 16px;
+
+  .divider {
+    margin: 6px 0;
+  }
+}
+
+label[data-testid="top-bar-chart-label"] span:last-child {
+  font-size: $font-size-13;
+  font-weight: $font-weight-semi-bold;
+}
+
+/* Left container styles */
+.leftContainer {
+  @extend %flex-container;
+  flex: 1 1 auto;
+  gap: 12px;
+  width: 0;
+
+  .filterIcon {
+    color: $global-gray-600;
+    font-size: $font-size-24;
+    font-weight: $font-weight-semi-bold;
+  }
+
+  .buttonContainer {
+    @extend %flex-container;
+    gap: 6px;
+  }
+
+  .clearButton {
+    color: $global-gray-600;
+  }
+
+  .buttonFocused {
+    background: rgba($global-blue-700, 0.12);
+  }
+}
+
+.chartContainer {
+  background-color: $global-gray-100;
+  border-top: 1px solid #e2e2e2;
+  height: 371px;
+  padding: 16px 24px;
+}

@@ -1,0 +1,55 @@
+export const investmentGrade = [
+  "Aaa",
+  "(P)Aaa",
+  "Aa1",
+  "(P)Aa1",
+  "Aa2",
+  "(P)Aa2",
+  "Aa3",
+  "(P)Aa3",
+  "A1",
+  "(P)A1",
+  "A2",
+  "(P)A2",
+  "A3",
+  "(P)A3",
+  "Baa1",
+  "(P)Baa1",
+  "Baa2",
+  "(P)Baa2",
+  "Baa3",
+  "(P)Baa3",
+];
+
+export const sectorList = [
+  "Corporates",
+  "Financial Institutions",
+  "Infrastructure And Project Finance",
+  "Insurance",
+  "Funds & Asset Management",
+  "Sovereign & Supranational",
+  "Structured Finance",
+  "Sub-Sovereign",
+  "U.S. Public Finance",
+];
+
+export const northAmerica = ["United States", "Bermuda", "Canada"];
+
+export const financialInstitutions = [
+  "Diversified Financial",
+  "Finance",
+  "Finance Companies",
+  "Finance-non Captive",
+  "Finance-Captive",
+  "Leasing",
+  "Trading Company",
+  "Government Related Institutions",
+  "Custodian Bank",
+  "Bank",
+  "Building Society",
+  "Credit Unions",
+  "Thrifts",
+  "Securities Co.",
+  "Exchanges & Clearing Houses",
+  "Real Estate Finance",
+];

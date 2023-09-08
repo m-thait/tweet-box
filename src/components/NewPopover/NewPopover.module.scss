@@ -1,0 +1,50 @@
+@import "~@moodys/mdc-frontend.theming.fonts/typography.module";
+@import "~@moodys/mdc-frontend.theming.colors/index.module";
+@import "src/styles/vars.module";
+
+.newPopoverBox {
+  margin-top: 9px;
+}
+
+.newPopover {
+  margin-top: 9px;
+
+  .childContainer {
+    display: flex;
+    padding: 16px;
+    width: 328px;
+
+    .content {
+      margin-bottom: 0;
+    }
+
+    .footnote {
+      font-size: $font-size-14;
+      font-style: italic;
+      font-weight: $font-weight-regular;
+      line-height: 1.5;
+      margin: 0;
+    }
+  }
+}
+
+.closeContainer {
+  padding-left: 0.5rem;
+
+  .closeIcon {
+    font-size: $font-size-17;
+  }
+
+  :global(.MuiIconButton-root) {
+    padding: 0;
+  }
+}
+
+.newButton {
+  align-self: baseline;
+  color: $global-white;
+  font-weight: $font-weight-medium;
+  height: 24px;
+  min-width: unset;
+  width: 44px;
+}

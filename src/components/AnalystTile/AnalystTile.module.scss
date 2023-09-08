@@ -1,0 +1,54 @@
+@import "~@moodys/mdc-frontend.theming.colors/index.module";
+@import "~@moodys/mdc-frontend.theming.fonts/typography.module";
+@import "src/styles/vars.module";
+
+$analyst-border-radius: 4px;
+$analyst-font-size: $font-size-14;
+$analyst-font-weight: 325;
+$analyst-email-font-size: $font-size-12;
+$analyst-title-font-weight: 600;
+
+.analyst {
+  background-color: $global-dark-blue-050;
+  border-radius: $analyst-border-radius;
+  gap: 10px;
+  height: 104px;
+  padding: 8px 16px;
+  width: 271px;
+
+  .emailIcon {
+    font-size: $analyst-font-size;
+    vertical-align: middle;
+  }
+
+  .analystName {
+    font-weight: $analyst-title-font-weight;
+  }
+
+  .emailAnalyst {
+    font-size: $analyst-email-font-size;
+    font-weight: $analyst-title-font-weight;
+    margin-left: 2px;
+    vertical-align: middle;
+  }
+}
+
+.analyst p {
+  font-size: $analyst-font-size;
+  font-weight: $analyst-font-weight;
+  letter-spacing: 0;
+  line-height: 22px;
+  margin-bottom: 0;
+  text-align: left;
+}
+
+.analyst a {
+  color: $global-brand-moodys-blue;
+  cursor: pointer;
+  display: block;
+  font-size: $analyst-email-font-size;
+  line-height: 16px;
+  margin-bottom: 8px;
+  text-decoration: none;
+  width: 105px;
+}

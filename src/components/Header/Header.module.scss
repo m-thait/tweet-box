@@ -1,0 +1,25 @@
+@import "~@moodys/mdc-frontend.theming.colors/index.module";
+@import "~@moodys/mdc-frontend.theming.fonts/typography.module";
+@import "src/styles/vars.module";
+
+.appBarContainer {
+  background-color: $global-blue-700;
+  color: $global-white;
+  height: 64px;
+  justify-content: center;
+}
+
+.divider {
+  border: 1px solid rgba($global-white, 0.22);
+  height: 26px;
+  margin: 0 20px;
+}
+
+.logo {
+  height: 24px;
+  width: 111px;
+}
+
+.gap {
+  margin-right: 12px;
+}

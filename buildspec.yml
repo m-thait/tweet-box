@@ -1,0 +1,104 @@
+version: 0.2
+env:
+  variables:
+    REACT_APP_NAME: "ESG-Screener"
+  shell: bash
+  secrets-manager:
+    AF_USER: "/devops/prd/api/jfrog/sys_prod_devops_cicd:username"
+    AF_PASSWORD: "/devops/prd/api/jfrog/sys_prod_devops_cicd:password"
+  parameter-store:
+    ARTIFACTORY_URL: "/devops/cicd/jfrog/artifactory_url"
+    REACT_APP_AG_GRID_LICENSE: "/mdc/web/ag_grid_license"
+    MDC_ORIGIN: "/mdc/${env}/sso/mdc_url"
+    ADOBE_DTM_URL: "/mdc/${env}/cv_home/key/adobedtm"
+    SPLIT_API_KEY: "/mdc/${env}/key/splitio"
+
+phases:
+  install:
+    commands:
+      - n 16.16.0
+      - export TERM=vt100
+      - apt-get update
+      - apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+      - apt install -y libatk-bridge2.0-0
+  pre_build:
+    commands:
+      ###############################
+      - "echo registry=${ARTIFACTORY_URL}/artifactory/api/npm/mdc-development-npm > .npmrc"
+      - "echo scripts-prepend-node-path=true >> .npmrc"
+      - curl -u ${AF_USER}:${AF_PASSWORD} ${ARTIFACTORY_URL}/artifactory/api/npm/auth >> .npmrc
+      - npm --version
+      - npm ci
+      - hostname -i
+      ###############################
+  build:
+    commands:
+      - node -v
+      - npm -v
+      ###############################
+      #ADD YOUR BUILD COMMANDS BELOW#
+      ###############################
+      - sysctl fs.inotify.max_user_watches=524288
+      - sysctl -p
+      - cat /proc/sys/fs/inotify/max_user_watches
+      ###### ADD Env Variables ######
+      - echo "MDC_ORIGIN=${MDC_ORIGIN}" >> .env
+      - echo REACT_APP_NAME=${REACT_APP_NAME} >> .env
+      - echo REACT_APP_AG_GRID_LICENSE=${REACT_APP_AG_GRID_LICENSE} >> .env
+      - echo "ADOBE_DTM_URL=${ADOBE_DTM_URL}" >> .env
+      - echo "QUALTRICS_ID=ZN_6MwgPzuyxmDNF5j" >> .env
+      - echo "SPLIT_API_KEY=${SPLIT_API_KEY}" >> .env
+      - echo "ENV=${env}" >> .env
+      ###############################
+      ###### ADD Test Report ########
+      - |
+        if [[ "$CODEBUILD_SOURCE_VERSION" =~ ^pr/* ]]; then
+          echo "BYPASS_OKTA=true" >> .env
+          echo COMMIT_INFO_MESSAGE="$(git log -1 --pretty=%B)",COMMIT_INFO_EMAIL="$(git log -1 --pretty=%ae)",COMMIT_INFO_AUTHOR="$(git log -1 --pretty=%an)" >> git_vars.txt
+          ENV=localhost PORT=3001 npx nps localhostTest || exit 1
+          npm run test:coverage || exit 1
+        else
+          echo '<?xml version="1.0"?><testsuites failures="0" errors="0" tests="2"><testsuite name="RVToPDF_healthCheck" id="58ec0c6f-4151-4dc0-95a3-a44459fc6988" timestamp="2021-12-09T18:08:45.127Z" tests="2" failures="0" errors="0" time="2.836"><testcase name="Status code is 200" time="2.836" classname="NoneLocalhost"/><testcase name="PDF should return" time="2.836" classname="NoneLocalhost"/></testsuite></testsuites>' >junit.xml
+          mkdir ./coverage
+          echo '<?xml version="1.0" encoding="UTF-8"?><coverage generated="0" clover="3.2.0"></coverage>' > ./coverage/clover.xml
+          echo "We are in ${env} and not a PR build, no need to run tests"
+        fi
+      ###############################
+      ###### Run build command ######
+      - ENV=${env} npm run build
+      - |
+        if [[ $env =~ "dev" ]]; then
+          DEV_FEDERATION=true npm run build:dev
+        fi
+      ###############################
+  post_build:
+    commands:
+      - sleep 10
+      - |
+        if [[ "$CODEBUILD_SOURCE_VERSION" =~ ^pr/* ]]; then
+          npx nps localReport
+        fi
+artifacts:
+  type: zip
+  base-directory: "build"
+  files:
+    - "**/*"
+
+reports:
+  # Replace this line in this format, when you utilize this template
+  ## arn:aws:codebuild:us-east-1:679432966719:report-group/<TEAM>-<REPO NAME>-junit
+  arn:aws:codebuild:us-east-1:679432966719:report-group/development-mdc-screener-web-frontend-junit:
+    files:
+      # JUnit XML or Cucumber JSON
+      - "junit.xml"
+      - "cypress/reports/finalReports/junit.xml"
+    file-format: JUNITXML
+    base-directory: "."
+  arn:aws:codebuild:${region}:679432966719:report-group/${team}-${application}-frontend-code-coverage:
+    files:
+      - "coverage/clover.xml"
+    file-format: CLOVERXML
+    base-directory: "."
+#cache:
+#  paths:
+#   - "./node_modules/**/*"

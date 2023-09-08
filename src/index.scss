@@ -1,0 +1,450 @@
+@import "~@moodys/mdc-table.themes.base/index.module";
+@import "~@moodys/mdc-frontend.theming.fonts/typography.module";
+@import "~@moodys/mdc-frontend.theming.colors/index.module";
+// @import "components/Table/components/Tooltip/Tooltip.module";
+@import "styles/vars.module";
+
+html {
+  font-size: $font-size-base;
+}
+
+body {
+  font-family: $font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+/** Need to scroll rows under list median after upgrading to ag grid 29+ */
+.ag-body {
+  flex-grow: 1;
+  overflow: hidden;
+
+  .ag-body-clipper {
+    height: 100%;
+
+    .ag-body-viewport {
+      width: 100% !important; /* stylelint-disable-line declaration-no-important */
+    }
+  }
+
+  // Disable Duplicate Scrolls
+  .ag-center-cols-viewport {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  // Disable space for duplicate scroll
+  .ag-center-cols-clipper {
+    margin-right: 0 !important; /* stylelint-disable-line declaration-no-important */
+  }
+}
+
+/* stylelint-disable selector-no-qualifying-type */
+.ag-theme-base-table {
+  /* Removing default ag-grid SSRM loading message */
+  .ag-loading {
+    display: none;
+  }
+
+  height: calc(
+    100% - 53px
+  ) !important; /* stylelint-disable-line declaration-no-important */
+  width: 100% !important; /* stylelint-disable-line declaration-no-important */
+
+  /** Setting height of list items in column filter menu, multi-select **/
+  .ag-virtual-list-item.ag-filter-virtual-list-item {
+    height: 21px !important; /* stylelint-disable-line declaration-no-important */
+  }
+
+  div.ag-set-filter-item {
+    font-family: $font-family;
+    font-weight: $font-weight-medium;
+    line-height: $heading-line-height;
+  }
+
+  .ag-standard-button.ag-filter-apply-panel-button {
+    color: $global-gray-600;
+    font-family: $font-family;
+    font-size: $font-size-12;
+    font-weight: $font-weight-semi-bold;
+    line-height: $heading-line-height;
+  }
+
+  span.ag-icon.ag-icon-menu::before {
+    align-items: center;
+    background-image: url("../public/assets/images/menu.svg");
+    background-size: 20px 20px;
+    content: "";
+    display: flex;
+    height: 20px;
+    vertical-align: baseline;
+    width: 20px;
+  }
+
+  .ag-tab {
+    /** Setting border bottom color of column filter menu tab (not selected) **/
+    border-bottom-color: rgba($global-black, 0.12);
+
+    /** Setting color of column filter menu tab text (unselected) **/
+    color: rgba($global-blue-700, 0.54);
+
+    /** Setting height of tabs in column filter menu popover **/
+    height: 48px;
+
+    .ag-icon.ag-icon-menu::before,
+    .ag-icon.ag-icon-filter::before {
+      align-items: center;
+      background-image: url("../public/assets/images/column-filter-menu-edit.svg");
+      background-size: 20px 20px;
+      content: "      Edit";
+      display: flex;
+      font-family: $font-family;
+      font-size: $font-size-14;
+      font-weight: $font-weight-semi-bold;
+      height: 20px;
+      line-height: 1.5;
+      transform: translate(-21px, 2px);
+      vertical-align: baseline;
+      white-space: pre;
+      width: 20px;
+    }
+
+    .ag-icon.ag-icon-filter::before {
+      background-image: url("../public/assets/images/column-filter-menu-filter.svg");
+      content: "       Filter";
+      transform: translate(-18px, 2px);
+      width: 17px;
+    }
+  }
+
+  .ag-tab-selected {
+    /** Setting border bottom color of column filter menu tab (selected) **/
+    border-bottom-color: $global-blue-700;
+
+    /** Setting color of column filter menu tab text (selected) **/
+    color: $global-blue-700;
+
+    .ag-icon.ag-icon-menu::before {
+      background-image: url("../public/assets/images/column-filter-menu-edit-selected.svg");
+    }
+
+    .ag-icon.ag-icon-filter::before {
+      background-image: url("../public/assets/images/column-filter-menu-filter-selected.svg");
+    }
+  }
+
+  button.ag-side-button-button {
+    .tooltip-text {
+      @include tooltip-styles;
+      padding: 8px;
+
+      /** Position the tooltip **/
+      position: absolute;
+      right: 210%;
+      text-align: center;
+      top: -5px;
+      visibility: hidden;
+    }
+  }
+
+  button.ag-side-button-button:hover {
+    background-color: $side-panel-icon-color-hover;
+
+    .tooltip-text {
+      visibility: visible;
+    }
+  }
+
+  /* stylelint-disable selector-max-compound-selectors */
+  .ag-ltr .ag-side-bar-right {
+    z-index: 100;
+
+    .ag-side-button-button {
+      border-radius: $container-radius;
+      height: 40px;
+      margin-bottom: 22px;
+      min-height: 40px;
+      outline: 1px solid $global-gray-200;
+      width: 40px;
+    }
+
+    .ag-side-button {
+      .columnsMenu,
+      .filterMenu {
+        align-items: center;
+        background-image: url("../public/assets/images/edit.svg");
+        background-size: 20px 20px;
+        display: flex;
+        height: 20px;
+        transform: translate(-1.5px, 1.5px);
+        width: 20px;
+      }
+
+      .filterMenu {
+        background-image: url("../public/assets/images/filter.svg");
+      }
+    }
+
+    .ag-side-button.ag-selected {
+      .columnsMenu {
+        background-image: url("../public/assets/images/edit-selected.svg");
+        transform: translate(-0.5px, 1.5px);
+      }
+
+      .filterMenu {
+        background-image: url("../public/assets/images/filter-selected.svg");
+        transform: translate(-0.5px, 1.5px);
+      }
+
+      .ag-side-button-button {
+        border-left: transparent;
+        outline: 1px solid $global-blue-400;
+      }
+
+      button.ag-side-button-button {
+        background-color: $side-panel-icon-selected;
+      }
+    }
+  }
+
+  .ag-side-buttons {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+    padding-top: 22px;
+    width: 73px;
+    z-index: $z-index-100;
+  }
+
+  .ag-popup {
+    height: auto !important; /* stylelint-disable-line declaration-no-important */
+  }
+
+  .ag-label {
+    font-weight: $font-weight-regular; /** Setting font weight of column filter menu items text **/
+    white-space: unset;
+  }
+
+  /** Close icon on the pinned first column is not right aligned. The ag-cell-wrapper
+     is causing a side-effect, and this override is a workaround to fix the issue. **/
+  .ag-pinned-left-cols-container .ag-cell-wrapper {
+    display: block;
+  }
+
+  /** Cell style right alignment not working with enableCellTextSelection = true settings.
+     The ag-cell-wrapper is causing a side-effect, and this override is a workaround to
+     fix the issue. https://github.com/ag-grid/ag-grid/issues/3574#issuecomment-566636673 **/
+  .ag-ltr .ag-right-aligned-cell .ag-cell-wrapper {
+    flex-direction: row-reverse;
+  }
+
+  .ag-menu-option-text,
+  .ag-theme-base-table .ag-compact-menu-option-text {
+    font-family: $font-family;
+    font-size: $font-size-14;
+    font-weight: $font-weight-regular;
+    line-height: $heading-line-height;
+  }
+
+  .ag-header-group-text,
+  .ag-header-cell-text {
+    color: $global-black;
+    font-family: $font-family-narrow;
+    font-size: $font-size-14;
+    font-weight: $font-weight-medium;
+    line-height: $font-size-17;
+  }
+
+  .ag-cell,
+  .ag-header-cell,
+  .ag-header-group-cell,
+  .ag-header-group-cell-with-group {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  /** Removing background color on hover in table header row **/
+  .ag-header-cell.ag-header-cell-sortable.ag-focus-managed:hover,
+  .ag-header-group-cell.ag-header-group-cell-with-group.ag-column-resizing,
+  .ag-header-group-cell.ag-header-group-cell-with-group.ag-column-resizing:hover,
+  .ag-header-group-cell.ag-header-group-cell-with-group:hover,
+  .ag-header-cell:hover {
+    background-clip: content-box;
+    background-color: $global-white !important; /* stylelint-disable-line declaration-no-important */
+  }
+
+  .ag-header-group-cell.ag-header-group-cell-with-group.ag-column-resizing:first-child {
+    padding-left: 24px;
+  }
+
+  .ag-pinned-left-header .ag-header-group-cell.ag-header-group-cell-with-group {
+    padding-left: 24px;
+  }
+
+  /** Making the add entity popover search box visible **/
+  .ag-header,
+  .ag-pinned-left-header,
+  .ag-pinned-left-header .ag-header-row,
+  .ag-pinned-left-header .ag-header-cell {
+    overflow: visible;
+  }
+
+  /** Adding padding left to ensure text "Name" on the first header column aligns with the issuers **/
+  .ag-pinned-left-header .ag-header-cell {
+    padding-left: 24px;
+  }
+
+  /** Unsetting transformation to make add entity dropdown visible **/
+  .ag-header-row.ag-header-row-column,
+  .ag-header-row.ag-header-row-column-group {
+    transform: none !important; /* stylelint-disable-line declaration-no-important */
+  }
+
+  /** Removing border top from sub-header row **/
+  .ag-header-row:not(:first-child) .ag-header-cell,
+  .ag-header-row:not(:first-child)
+    .ag-header-group-cell.ag-header-group-cell-with-group {
+    border-top: none; /* stylelint-disable-line declaration-property-value-disallowed-list */
+  }
+
+  /** Adding border right on outer-most left-pinned header **/
+  .ag-pinned-left-header {
+    border-right: solid 3px var(--ag-border-color, rgba($global-black, 0.12));
+  }
+
+  /** Adding border right on outer-most left-pinned column **/
+  .ag-cell.ag-cell-last-left-pinned:not(
+      .ag-cell-range-right,
+      .ag-cell-range-single-cell
+    ) {
+    border-right: solid 3px var(--ag-border-color, rgba($global-black, 0.12));
+    padding-left: 24px;
+  }
+
+  /** Filter and Edit Menu container remove top and bottom padding */
+  .ag-tabs-body {
+    padding: 0;
+  }
+
+  /** Updating column filter menu tabs' background color **/
+  .ag-tabs-header.ag-menu-header {
+    background-color: $global-white;
+  }
+
+  /** Selected row background color **/
+  .ag-row-selected {
+    background-color: $global-white !important; /* stylelint-disable-line declaration-no-important */
+  }
+
+  /** Updating color of checkbox in filter menu **/
+  .ag-checkbox-input-wrapper.ag-checked::after,
+  .ag-checkbox-input-wrapper.ag-indeterminate::after {
+    color: $global-brand-mis-blue;
+  }
+}
+
+.ag-tabs.ag-menu.ag-focus-managed.ag-ltr.ag-popup-child {
+  margin-top: 35px;
+  width: 264px;
+  z-index: $z-index-101;
+}
+
+.ag-theme-base-table .ag-set-filter-list,
+.ag-theme-base-table .ag-filter-no-matches {
+  min-height: 285px;
+}
+
+button.ag-standard-button.ag-filter-apply-panel-button:focus {
+  box-shadow: none;
+}
+
+/** Disabling drawer for export button in side panel on-click **/
+.ag-tool-panel-wrapper:nth-child(4) {
+  display: none;
+}
+
+.ag-grid-add-entity {
+  background-color: rgba(
+    $global-cyan-500,
+    0.04
+  ) !important; /* stylelint-disable-line declaration-no-important */
+}
+
+/** Setting fixed width for column filter menu to prevent text overflow **/
+.ag-theme-base-table .ag-ltr .ag-label-align-right .ag-label {
+  width: 190px !important; /* stylelint-disable-line declaration-no-important */
+}
+
+/** Setting styles on column filter menu labels to create ellipses if text overflows **/
+.ag-input-field-label.ag-label.ag-checkbox-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/** Checkbox should be top-aligned with text in list items in filter menu **/
+.ag-input-field,
+.ag-select {
+  align-items: flex-start;
+}
+
+/** Updating search input field font in column filter menu 'Filter' tab **/
+.ag-wrapper.ag-input-wrapper.ag-text-field-input-wrapper {
+  font-family: $font-family;
+}
+
+/** Material UI Tool tips **/
+.MuiTooltip-tooltip {
+  background: rgba($global-black, 0.9);
+  color: $global-white;
+  font-size: $font-size-12;
+  font-weight: $font-weight-regular;
+  margin: 0;
+  padding: 0.25rem 0.5rem;
+}
+
+/** Sparkline tooltips **/
+.sparkline-tooltip {
+  background-color: rgba($global-black, 0.9);
+  border-radius: $icon-border-radius;
+  color: $global-white;
+  font-family: $font-family;
+  padding: 4px 8px;
+
+  table {
+    caption-side: bottom;
+
+    td {
+      padding: 0;
+    }
+
+    td,
+    caption {
+      min-width: 120px;
+      text-align: left;
+    }
+  }
+
+  .sparkline-tooltip-date,
+  .sparkline-tooltip-class {
+    font-size: $font-size-12;
+  }
+
+  .sparkline-tooltip-rating {
+    font-weight: $font-weight-semi-bold;
+    margin-left: -2px;
+  }
+}

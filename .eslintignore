@@ -1,0 +1,15 @@
+node_modules
+
+# All dot files can be left alone
+.*
+
+# Build outputs (make sure it's set to your correct build folder name)
+build
+public
+
+# Test coverage folder
+coverage
+testing/reports
+
+# Mock Api folder
+mockAPI

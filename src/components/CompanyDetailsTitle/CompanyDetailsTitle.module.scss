@@ -1,0 +1,27 @@
+@import "src/styles/vars.module";
+
+.companyTitleBox {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.companyTitle {
+  display: inline;
+  font-size: $font-size-20;
+  font-weight: $font-weight-semi-bold;
+  line-height: 30px;
+  margin-bottom: 0;
+}
+
+.companyButton {
+  padding-left: 14px;
+  padding-right: 14px;
+
+  .companyButtonText {
+    font-size: $font-size-14;
+    font-weight: $font-weight-semi-bold;
+    line-height: 20px;
+    margin-bottom: 0;
+  }
+}

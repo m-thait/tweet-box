@@ -1,0 +1,114 @@
+@import "~@moodys/mdc-frontend.theming.fonts/typography.module";
+@import "~@moodys/mdc-frontend.theming.colors/index.module";
+@import "src/styles/vars.module";
+
+%flex-container {
+  align-items: center;
+  display: flex;
+}
+
+%filter-font-family {
+  font-family: $font-family;
+  font-size: $font-size-13;
+}
+
+.toolBarContainer {
+  @extend %flex-container;
+  background: $blue-light-background;
+  flex: 1 1 auto;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 17px 24px 15px;
+}
+
+/* Right container styles */
+.rightContainer {
+  @extend %flex-container;
+  flex-direction: row-reverse;
+  gap: 16px;
+
+  .divider {
+    margin: 4px 0;
+  }
+
+  .buttonFocused {
+    background: rgba($global-blue-700, 0.12);
+  }
+}
+
+label[data-testid="top-bar-chart-label"] span:last-child {
+  font-size: $font-size-13;
+  font-weight: $font-weight-semi-bold;
+}
+
+/* Left container styles */
+.leftContainer {
+  @extend %flex-container;
+  flex: 1 1 auto;
+  gap: 12px;
+  width: 0;
+
+  .label {
+    @extend %flex-container;
+    @extend %filter-font-family;
+    font-weight: $font-weight-semi-bold;
+    gap: 2px;
+  }
+
+  .filterIcon {
+    color: $global-gray-600;
+    font-size: $font-size-24;
+    font-weight: $font-weight-semi-bold;
+  }
+
+  .chevronIcon {
+    color: rgba($global-black, 0.54);
+    cursor: pointer;
+    font-size: $font-size-20;
+
+    :hover {
+      color: rgba($global-black, 0.8);
+    }
+  }
+
+  .chips {
+    @extend %flex-container;
+    gap: 8px;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    white-space: nowrap;
+  }
+
+  .buttonContainer {
+    @extend %flex-container;
+    gap: 6px;
+  }
+
+  .clearButton {
+    color: $global-gray-600;
+  }
+
+  .buttonFocused {
+    background: rgba($global-blue-700, 0.12);
+  }
+
+  .filterChip {
+    @extend %filter-font-family;
+    background: $global-blue-100;
+    border-color: $global-blue-300;
+    color: $global-blue-800;
+    cursor: auto;
+    font-weight: $font-weight-medium;
+
+    svg {
+      color: rgba($global-blue-700, 0.3);
+    }
+  }
+}
+
+.chartContainer {
+  background-color: $global-gray-100;
+  border-top: 1px solid #e2e2e2;
+  height: 371px;
+  padding: 16px 24px;
+}

@@ -1,0 +1,163 @@
+@import "src/styles/vars.module";
+
+.ratingChartContainer,
+.scoreChartsContainer,
+.skeletonContainer {
+  background-color: $global-white;
+  height: 283px;
+  max-width: none;
+  padding: 16px;
+
+  div {
+    max-width: none;
+  }
+}
+
+.scoreChartContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  width: 100%;
+
+  div {
+    border-width: 0;
+  }
+
+  > div {
+    height: fit-content;
+  }
+
+  :global(.MuiBox-root:first-child) {
+    padding: 0;
+  }
+}
+
+.ratingChart {
+  padding: 20px 0 0;
+
+  li button,
+  g text {
+    color: $global-gray-600;
+    font-family: $font-family;
+    font-weight: $font-weight-medium !important; // stylelint-disable-line declaration-no-important
+  }
+
+  > div {
+    border-width: 0;
+  }
+}
+
+.scoreLegend,
+.scoreLegend > div,
+.scoreLegendItem {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+}
+
+.scoreLegend {
+  position: relative;
+  width: 100%;
+  z-index: 10;
+
+  > div {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+}
+
+.scoreChartsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .scoreChartsHeader {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+    padding: 0;
+    width: 100%;
+
+    > div {
+      padding: 0;
+    }
+  }
+
+  .scoreChartsRow {
+    background-color: $global-white;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    height: 186px;
+    padding: 0;
+  }
+}
+
+.ratingChart > div > div:first-child {
+  padding: 0;
+  visibility: hidden;
+}
+
+.scoreLegendItem {
+  margin-left: 10px;
+  margin-right: 0;
+  width: fit-content;
+
+  .scoreLegendItemSquare {
+    height: 10px;
+    margin-right: 6px;
+    width: 10px;
+  }
+}
+
+.scoreLegendText {
+  color: $global-gray-600;
+  line-height: 1;
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.ratingsStats {
+  align-content: flex-start;
+  display: flex;
+  flex-direction: row;
+  height: 24px;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.ratingsSelect {
+  font-size: $font-size-14;
+}
+
+.ratingChartContainer {
+  :global(.MuiInputBase-root) {
+    height: 32px;
+    width: 280px;
+  }
+}
+
+.ratingsChartMenu {
+  :global(.MuiSelect-select) {
+    font-size: $font-size-14;
+    padding: 14px 32px 14px 14px;
+  }
+
+  :global(.MuiMenuItem-root) {
+    font-size: $font-size-14;
+    margin-bottom: 0;
+  }
+
+  :global(.MuiMenu-list) {
+    padding: 0;
+  }
+
+  :global(.MuiPopover-paper) {
+    box-shadow: 0 5px 5px -3px rgb(0 0 0 / 0.03),
+      0 8px 10px 1px rgb(0 0 0 / 0.08), 0 3px 14px 2px rgb(0 0 0 / 0.06);
+  }
+}

@@ -1,0 +1,13 @@
+// local storage
+const LOCAL_STORAGE_KEY = "mdc-state-screener";
+const PEER_COMPARISON_ORGS_LOCAL_STORAGE_KEY = "mdc_screener_orgs";
+const CV2_PEER_COMPARISON_ORGS_LOCAL_STORAGE_KEY = "mdc_screener_issuer";
+const CIS_DISTRIBUTION_ORGS_LOCAL_STORAGE_KEY =
+  "mdc_screener_distribution_orgs";
+
+export {
+  LOCAL_STORAGE_KEY,
+  PEER_COMPARISON_ORGS_LOCAL_STORAGE_KEY,
+  CIS_DISTRIBUTION_ORGS_LOCAL_STORAGE_KEY,
+  CV2_PEER_COMPARISON_ORGS_LOCAL_STORAGE_KEY,
+};

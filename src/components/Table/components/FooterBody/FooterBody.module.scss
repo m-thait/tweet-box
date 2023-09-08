@@ -1,0 +1,49 @@
+@import "src/styles/vars.module";
+
+.container {
+  align-items: center;
+  color: $global-gray-600;
+  display: flex;
+  font-family: $font-family-whitney;
+  font-size: $font-size-12;
+  font-weight: $font-weight-medium;
+  line-height: 17px;
+  overflow: hidden;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  .divider {
+    background: $global-gray-600;
+    border-right-width: 1px;
+    color: $global-black;
+    height: 14px;
+    margin: 0 18px;
+    opacity: 0.12;
+    width: 2px;
+  }
+
+  .refreshIcon {
+    color: $global-blue-700;
+    opacity: 0.6;
+  }
+
+  .message {
+    font-style: italic;
+  }
+
+  .messageLink {
+    color: $global-blue-500;
+    cursor: pointer;
+  }
+
+  .disclaimer {
+    color: $global-gray-600;
+    margin-right: 8px;
+    margin-top: 3px;
+
+    sup {
+      font-size: $font-size-10;
+    }
+  }
+}

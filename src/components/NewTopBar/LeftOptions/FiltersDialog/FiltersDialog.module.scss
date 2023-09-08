@@ -1,0 +1,37 @@
+@import "src/styles/vars.module";
+
+/* eslint-disable selector-max-compound-selectors */
+.filterDialog {
+  :global(.MuiDialog-container > .MuiPaper-root) {
+    height: 75vh;
+    max-height: 518px;
+    max-width: 721px;
+    overflow: visible;
+    width: 90vw;
+  }
+
+  :global(.MuiDialogContent-root) {
+    overflow-y: visible;
+    padding: 0;
+  }
+
+  :global(.MuiDialog-paper) {
+    box-shadow: 0 3px 14px 2px #0000000f, 0 8px 10px 1px #00000014,
+      0 5px 5px -3px #00000008;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 75vh;
+  justify-content: space-between;
+  margin: 0;
+  max-height: 458px;
+}
+
+.selectGroups {
+  > :not(:last-child) {
+    border-bottom: 1px solid rgba($global-black, 0.14);
+  }
+}

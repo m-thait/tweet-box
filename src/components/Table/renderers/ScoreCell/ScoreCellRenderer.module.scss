@@ -1,0 +1,48 @@
+@import "src/styles/vars.module";
+
+.scoreCellContainer {
+  a {
+    cursor: pointer;
+  }
+}
+
+.score:hover {
+  text-decoration: underline;
+}
+
+.subScore {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+
+  .iconButton {
+    border-radius: $icon-border-radius;
+    height: 24px;
+    width: 24px;
+
+    svg {
+      color: rgba($global-blue-500, 0.6);
+      width: 12px;
+    }
+
+    &:hover {
+      background: rgba($global-blue-700, 0.04);
+    }
+
+    &:active {
+      background-color: rgba($global-blue-700, 0.12);
+    }
+  }
+
+  &:hover {
+    color: $global-gray-600;
+  }
+}
+
+.container {
+  color: $global-gray-400;
+
+  sup {
+    font-size: $font-size-10;
+  }
+}

@@ -1,0 +1,81 @@
+version: 0.2
+env:
+  shell: bash
+  secrets-manager:
+    AF_USER: "/devops/prd/api/jfrog/sys_prod_devops_cicd:username"
+    AF_PASSWORD: "/devops/prd/api/jfrog/sys_prod_devops_cicd:password"
+    ESG_USER_CORE_CREDENTIALS: "/mdc/${env}/qa/esg_core_user"
+    ESG_USER_PREMIUM_CREDENTIALS: "/mdc/${env}/qa/esg_premium_user"
+    ESG_USER_SR_CREDENTIALS: "/mdc/${env}/qa/sr_user"
+    ESG_USER_SECTOR_CREDENTIALS: "/mdc/${env}/qa/esg_sector_user"
+  parameter-store:
+    ARTIFACTORY_URL: "/devops/cicd/jfrog/artifactory_url"
+  variables:
+    CYPRESS_RECORD_KEY: "8d6bd013-4dda-4436-b2dc-b7dafb98a534"
+
+batch:
+  build-matrix:
+    static:
+      ignore-failure: false
+      env:
+        type: LINUX_CONTAINER
+    dynamic:
+      env:
+        variables:
+          WORKERS:
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+
+phases:
+  install:
+    commands:
+      - export TERM=vt100
+      - apt-get update
+      - apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+      - apt install -y libatk-bridge2.0-0
+  pre_build:
+    commands:
+      - printenv
+      #  - gitTxtContent=`cat git_vars.txt`
+      #  - IFS=',' read -r -a array <<< "$gitTxtContent"
+      #  - line1="${array[0]}"
+      #  - line2="${array[1]}"
+      #  - line3="${array[2]}"
+      #  - IFS='=' read -r -a line1Array <<< "$line1"
+      #  - var1="${line1Array[1]}"
+      #  - IFS='=' read -r -a line2Array <<< "$line2"
+      #  - var2="${line2Array[1]}"
+      #  - IFS='=' read -r -a line3Array <<< "$line3"
+      #  - var3="${line3Array[1]}"
+      - "echo registry=${ARTIFACTORY_URL}/artifactory/api/npm/mdc-development-npm > .npmrc"
+      - "echo scripts-prepend-node-path=true >> .npmrc"
+      - curl -u ${AF_USER}:${AF_PASSWORD} ${ARTIFACTORY_URL}/artifactory/api/npm/auth >> .npmrc
+      - npm --version
+      - export COMMIT_INFO_BRANCH="${env} ${git_branch}"
+      #  - export COMMIT_INFO_MESSAGE="${var1}"
+      #  - export COMMIT_INFO_EMAIL="${var2}"
+      # - export COMMIT_INFO_AUTHOR="${var3}"
+      - export COMMIT_INFO_SHA="${CODEBUILD_RESOLVED_SOURCE_VERSION}"
+      - export COMMIT_INFO_REMOTE="https://github.com/${repo_name}"
+      - npm ci
+      - echo "ESG_USER_CORE_CREDENTIALS=${ESG_USER_CORE_CREDENTIALS}" >> .env
+      - echo "ESG_USER_PREMIUM_CREDENTIALS=${ESG_USER_PREMIUM_CREDENTIALS}" >> .env
+      - echo "ESG_USER_SR_CREDENTIALS=${ESG_USER_SR_CREDENTIALS}" >> .env
+
+  build:
+    commands:
+      - npx nps ${env}Test
+    finally:
+      - echo "We are in build command finally step!"
+  post_build:
+    commands:
+      - npx nps ${env}Report
+
+reports:
+  TestFolder:
+    files:
+      - cypress/reports/finalReports/junit.xml
+    file-format: JUNITXML

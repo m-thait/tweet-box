@@ -1,0 +1,149 @@
+/* eslint-disable no-restricted-imports */
+import {
+  entityDetails,
+  summaryRatings,
+  banksSummaryRatings,
+  publicFinanceSummaryRatings,
+  outlook,
+  creditImpactScore,
+  environmentIssuerProfileScore,
+  socialIssuerProfileScore,
+  governanceIssuerProfileScore,
+  carbonTransitionAssessment,
+} from "../../locators/screener";
+
+export const agGridHeaderDefaultForCoreUser = () => {
+  cy.get(entityDetails.getEntityDetails).should("exist").and("be.visible");
+  cy.get(entityDetails.getOrgName).should("exist").and("be.visible");
+  cy.get(entityDetails.getSector).should("not.exist");
+  cy.get(entityDetails.getSubSector).should("exist").and("be.visible");
+  cy.get(entityDetails.getCountry).should("exist").and("be.visible");
+  cy.get(entityDetails.getCreditAnalyst).should("not.exist");
+  cy.get(entityDetails.getOrgID).should("not.exist");
+  cy.get(entityDetails.getLei).should("not.exist");
+
+  cy.get(summaryRatings.getSummaryRatings).should("exist").and("be.visible");
+  cy.get(summaryRatings.getLtRating).should("exist").and("be.visible");
+  cy.get(summaryRatings.getLtRatingDescription)
+    .should("exist")
+    .and("be.visible");
+  cy.get(summaryRatings.getLastLtRatingAction)
+    .should("exist")
+    .and("be.visible");
+  cy.get(summaryRatings.getLtRatingActionDate)
+    .should("exist")
+    .and("be.visible");
+
+  cy.get(banksSummaryRatings.getBanksSummaryRatings)
+    .should("exist")
+    .and("be.visible");
+  cy.get(banksSummaryRatings.getLtBankSummary)
+    .should("exist")
+    .and("be.visible");
+  cy.get(banksSummaryRatings.getLtBankSummaryAction).should("not.exist");
+  cy.get(banksSummaryRatings.getLtBankSummaryActionDate).should("not.exist");
+  cy.get(banksSummaryRatings.getLtBankSummaryActionClass).should("not.exist");
+
+  cy.get(publicFinanceSummaryRatings.getPublicFinanceSummaryRatings).should(
+    "not.exist"
+  );
+  cy.get(publicFinanceSummaryRatings.getLtIssuerRating).should("not.exist");
+  cy.get(publicFinanceSummaryRatings.getLtIssuerRatingActionDate).should(
+    "not.exist"
+  );
+  cy.get(publicFinanceSummaryRatings.getSeniormostTaxBacked).should(
+    "not.exist"
+  );
+  cy.get(publicFinanceSummaryRatings.getSeniormostTaxBackedActionDate).should(
+    "not.exist"
+  );
+  cy.get(publicFinanceSummaryRatings.getSeniormostRevenueBacked).should(
+    "not.exist"
+  );
+  cy.get(
+    publicFinanceSummaryRatings.getSeniormostRevenueBackedActionDate
+  ).should("not.exist");
+
+  cy.get(outlook.getOutlook).should("exist").and("be.visible");
+  cy.get(outlook.getIssuerOutlook).should("exist").and("be.visible");
+
+  cy.get(creditImpactScore.getCreditImpactScore)
+    .should("exist")
+    .and("be.visible");
+  cy.get(creditImpactScore.getCIS).should("exist").and("be.visible");
+  cy.get(creditImpactScore.getCisAndIpsDate).should("exist").and("be.visible");
+
+  cy.get(environmentIssuerProfileScore.getEnvironmentIssuerProfileScore)
+    .should("exist")
+    .and("be.visible");
+  cy.get(environmentIssuerProfileScore.getIpsE)
+    .should("exist")
+    .and("be.visible");
+  cy.get(environmentIssuerProfileScore.getPhysicalClimateRisks).should(
+    "not.exist"
+  );
+  cy.get(environmentIssuerProfileScore.getCarbonTransition).should("not.exist");
+  cy.get(environmentIssuerProfileScore.getWaterManagement).should("not.exist");
+  cy.get(environmentIssuerProfileScore.getNaturalCapital).should("not.exist");
+  cy.get(environmentIssuerProfileScore.getWasteAndPollution).should(
+    "not.exist"
+  );
+
+  cy.get(socialIssuerProfileScore.getSocialIssuerProfileScore)
+    .should("exist")
+    .and("be.visible");
+  cy.get(socialIssuerProfileScore.getIpsS).should("exist").and("be.visible");
+  cy.get(socialIssuerProfileScore.getCustomerRelations).should("not.exist");
+  cy.get(socialIssuerProfileScore.getHumanCapital).should("not.exist");
+  cy.get(socialIssuerProfileScore.getDemographicAndSocietalTrends).should(
+    "not.exist"
+  );
+  cy.get(socialIssuerProfileScore.getHealthAndSafetlyPrivate).should(
+    "not.exist"
+  );
+  cy.get(socialIssuerProfileScore.getResponsibleProduction).should("not.exist");
+  cy.get(socialIssuerProfileScore.getDemographics).should("not.exist");
+  cy.get(socialIssuerProfileScore.getLaborAndIncome).should("not.exist");
+  cy.get(socialIssuerProfileScore.getEducation).should("not.exist");
+  cy.get(socialIssuerProfileScore.getHousing).should("not.exist");
+  cy.get(socialIssuerProfileScore.getHealthAndSafety).should("not.exist");
+  cy.get(socialIssuerProfileScore.getAccessToBasicServices).should("not.exist");
+
+  cy.get(governanceIssuerProfileScore.getGovernanceIssuerProfileScore)
+    .should("exist")
+    .and("be.visible");
+  cy.get(governanceIssuerProfileScore.getIpsG)
+    .should("exist")
+    .and("be.visible");
+  cy.get(governanceIssuerProfileScore.getFinancialStrategyAndRisk).should(
+    "not.exist"
+  );
+  cy.get(
+    governanceIssuerProfileScore.getManagementCredibilityAndTrackRecord
+  ).should("not.exist");
+  cy.get(governanceIssuerProfileScore.getBoardStructureAndPolicies).should(
+    "not.exist"
+  );
+  cy.get(governanceIssuerProfileScore.getOrganizationalStructure).should(
+    "not.exist"
+  );
+  cy.get(governanceIssuerProfileScore.getComplianceAndReporting).should(
+    "not.exist"
+  );
+  cy.get(governanceIssuerProfileScore.getInstitutionalStructure).should(
+    "not.exist"
+  );
+  cy.get(
+    governanceIssuerProfileScore.getPolicyCredibilityAndEffectiveness
+  ).should("not.exist");
+  cy.get(governanceIssuerProfileScore.getBudgetManagement).should("not.exist");
+  cy.get(governanceIssuerProfileScore.getTransparencyAndDisclosure).should(
+    "not.exist"
+  );
+
+  cy.get(carbonTransitionAssessment.getCTA).should("not.exist");
+  cy.get(carbonTransitionAssessment.getCarbonTransitionAssessment).should(
+    "not.exist"
+  );
+  cy.get(carbonTransitionAssessment.getCtaDate).should("not.exist");
+};

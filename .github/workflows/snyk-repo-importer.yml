@@ -1,0 +1,10 @@
+name: Snyk Security Validator
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  call-remote-snyk-import-workflow:
+    uses: moodys-ma-mdc/mdc-devops-org-shared-workflows/.github/workflows/snyk-repo-importer.yaml@main
+    secrets: inherit

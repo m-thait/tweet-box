@@ -1,0 +1,25 @@
+{
+  "avo": {
+    "version": 3
+  },
+  "schema": {
+    "id": "HG3IQB5agPHQutHhkkLP",
+    "name": "MDC Tracking Plan"
+  },
+  "branch": {
+    "id": "master",
+    "name": "main"
+  },
+  "sources": [
+    {
+      "id": "ibmhSD4pa",
+      "name": "Web",
+      "path": "src/services/analytics/Avo.ts",
+      "interfacePath": "src/services/analytics/Avo.ts",
+      "actionId": "550HJ56npwbgutwdbD0w",
+      "branchId": "master",
+      "updatedAt": "2023-08-11T15:25:51.920Z"
+    }
+  ],
+  "force": false
+}

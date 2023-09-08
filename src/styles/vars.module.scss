@@ -1,0 +1,46 @@
+@import "~@moodys/mdc-frontend.theming.fonts/typography.module";
+@import "~@moodys/mdc-frontend.theming.colors/index.module";
+
+//z-indexes
+$z-index-1: 1;
+$z-index-neg-1: -1;
+$z-index-100: 100;
+$z-index-101: 101;
+$z-index-200: 200;
+$z-index-1000: 1000;
+
+//Colors
+$side-panel-icon-color-hover: #0028a00a;
+$side-panel-icon-selected: #00145014;
+$navbar-font-color: #a8b2db;
+$navbar-border-color: #3d52ae;
+$footer-divider-color: #7f7f7f;
+$blue-light-background: $global-dark-blue-050;
+$grey-border-color: #0000001f;
+$grey-date-range-label: #989a9c;
+
+//Font sizes
+$font-size-base: 16px;
+$font-size-10: 0.625rem;
+$font-size-12: 0.75rem;
+$font-size-13: 0.813rem;
+$font-size-14: 0.875rem;
+$font-size-17: 1.063rem;
+$font-size-18: 1.125rem;
+$font-size-20: 1.25rem;
+$font-size-24: 1.5rem;
+$font-size-32: 2rem;
+$font-size-40: 2.5rem;
+$font-size-44: 2.75rem;
+
+$container-radius: 4px;
+$heading-line-height: 1.4;
+
+%button-font-family {
+  cursor: pointer;
+  font-family: $font-family;
+  font-size: $font-size-12;
+  font-weight: $font-weight-semi-bold;
+}
+
+$icon-border-radius: 4px;

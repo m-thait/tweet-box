@@ -1,0 +1,25 @@
+@import "~@moodys/mdc-frontend.theming.colors/index.module";
+@import "~@moodys/mdc-frontend.theming.fonts/typography.module";
+
+$icon-button-border-radius: 0;
+
+.iconContainer {
+  align-items: center;
+  border-radius: $icon-button-border-radius;
+  color: $global-black;
+  display: flex;
+  flex-shrink: 0;
+  height: 32px;
+  justify-content: center;
+  width: 32px;
+
+  .closeIcon {
+    height: 16px;
+    width: 16px;
+  }
+}
+
+.background {
+  background: rgba($global-brand-moodys-blue, 0.04);
+  cursor: pointer;
+}

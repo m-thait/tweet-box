@@ -1,0 +1,41 @@
+@import "src/styles/vars.module";
+
+.statContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  margin: 0;
+  padding: 0;
+  width: fit-content;
+
+  .text {
+    color: $global-gray-600;
+    margin-bottom: 0;
+    white-space: nowrap;
+  }
+
+  .infoIcon {
+    cursor: default;
+    padding: 0 5px;
+
+    svg {
+      color: rgba($global-blue-700, 0.6);
+      font-size: $font-size-13;
+    }
+  }
+}
+
+.popoverContainer {
+  align-items: center;
+  background: rgba($global-black, 0.9);
+  color: $global-white;
+  display: flex;
+  justify-content: center;
+  max-width: 300px;
+
+  p {
+    margin: 0;
+    padding: 0.25rem 0.5rem;
+  }
+}

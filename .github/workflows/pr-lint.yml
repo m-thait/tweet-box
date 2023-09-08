@@ -1,0 +1,38 @@
+#############################################################################################################
+## Author: Digital Insights Dev                                                                         ##
+## Description: This workflow validates if JiraID is present in the PR title                            ##
+## Warning: This file is updated automatically by mdc-dev-github-sync. Please don't change it manually. ##
+#############################################################################################################
+
+
+name: PR Linter
+on:
+  pull_request:
+    types: [opened, edited, synchronize]
+jobs:
+  pr_lint:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check PR title
+      id: step_0
+      env:
+        PR_TITLE: ${{ github.event.pull_request.title }}
+      run: |
+          if [[ $(echo "$PR_TITLE" | grep -i '\[CHORE\]') ]]; then
+            echo "PR title contains [CHORE]"
+            echo "::set-output name=skip_linter::true"
+            exit 0
+          fi
+    - name: Check PR author
+      id: step_1
+      run: |
+        if [ "${{ github.event.pull_request.user.login }}" = "sys-prod-devops-cicd" ]; then
+          echo "User was sys-prod-devops-cicd. We do not need to lint this PR"
+          echo "::set-output name=skip_linter::true"
+        fi
+        exit 0
+    - name: Linter
+      uses: vijaykramesh/pr-lint-action@v1.0
+      if: steps.step_1.outputs.skip_linter != 'true' && steps.step_0.outputs.skip_linter != 'true'
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

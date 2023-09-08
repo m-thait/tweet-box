@@ -1,0 +1,51 @@
+@import "src/styles/vars.module";
+@import "~@moodys/mdc-frontend.theming.colors/index.module";
+@import "~@moodys/mdc-frontend.theming.fonts/typography.module";
+
+$border-radius-close-icon: 0;
+
+.container {
+  display: flex;
+  justify-content: space-between;
+
+  .helperLink {
+    color: $global-gray-600;
+    cursor: pointer;
+    font-family: $font-family;
+    font-size: $font-size-10;
+    font-weight: $font-weight-regular;
+    height: 14px;
+    line-height: 14px;
+    text-decoration: underline $global-gray-600;
+  }
+
+  .pinnedHeading {
+    font-weight: $font-weight-medium;
+  }
+}
+
+.medianPopover {
+  margin-top: 9px;
+
+  .childContainer {
+    display: flex;
+    padding: 16px;
+    width: 298px;
+
+    .content {
+      font-family: $font-family;
+      font-size: $font-size-12;
+      font-weight: $font-weight-medium;
+    }
+  }
+}
+
+.closeContainer {
+  .closeIcon {
+    font-size: $font-size-17;
+  }
+
+  :global(.MuiIconButton-root) {
+    padding: 0;
+  }
+}

@@ -1,0 +1,47 @@
+@import "src/styles/vars.module";
+
+.width80 {
+  width: 80px;
+}
+
+%flex-container {
+  align-items: center;
+  display: flex;
+}
+
+.topBarContainer {
+  @extend %flex-container;
+  background: $blue-light-background;
+  flex: 1 1 auto;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 17px 24px 15px;
+
+  .leftContainer {
+    @extend %flex-container;
+    flex: 1 1 auto;
+    gap: 12px;
+    width: 0;
+
+    .chipsSkeleton {
+      height: 32px;
+      width: 80px;
+    }
+
+    .iconSkeleton {
+      height: 32px;
+      width: 32px;
+    }
+  }
+
+  .rightContainer {
+    @extend %flex-container;
+    flex-direction: row-reverse;
+    gap: 32px;
+
+    .iconButtonSkeleton {
+      height: 32px;
+      width: 120px;
+    }
+  }
+}
