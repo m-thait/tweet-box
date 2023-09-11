@@ -1,9 +1,11 @@
+import { FC } from "react";
 import styles from "./TweetBox.module.scss";
 import { Box } from "@mui/material";
 
-export const TweetBox = (message: string | undefined) => {
-    return (
-      <Box className={styles.container}>
+export const TweetBox : FC<{message: string, id: string}>= ({message, id}) => {
+  // console.log(id)  
+  return (
+      <Box className={styles.container} key={id}>
           <Box className={styles.whitebox}>
             <Box className={styles.tweet}> 
               {/* <p> What's happening? </p> */}

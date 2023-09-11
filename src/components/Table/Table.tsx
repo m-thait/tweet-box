@@ -115,26 +115,23 @@ export const Table = () => {
   }
 
   // array
-  const message = [
-    "Hello",
-    "How are you?",
-    "Tweet anything",
-    "I love weekends!",
-    "Goody Moody"
+  const messages: any[] = [{
+    message: "Hello"
+  }, {
+    message: "How are you"
+  }, {
+    message: "Hi"
+  }, {
+    message: "Bye"
+  }, {
+    message: "OMG"
+  }
+  
 ]
-
-  // map
-  const tweet = new Map([
-    ["m0", "hi"],
-    ['m1', 'hello'],
-    ['m2', 'chao'],
-    ['m3', 'hola'],
-    ['m4', 'hey'],
-  ])
 
   return userType != EsgUserType.ESG_NONE ? (
     <>
-      {mediumScreens && (
+      {/* {mediumScreens && (
         <SplitWrapper
           splitName={ESG_TOP_BAR_FLAG}
           treatmentElementMap={{
@@ -146,30 +143,17 @@ export const Table = () => {
             ),
           }}
         />
-      )}
+      )} */}
 
-      {/* TODO: iterate 5 times to render different tweet messages */}
+      {/* {TweetBox(messages[0])} */}
 
-      {/* {for (let i = 0; i < message.length; i++) {
-        {TweetBox(message[i])}
-      }} */}
-
-      {/* {TweetBox(message[0])}
-      {TweetBox(message[1])}
-      {TweetBox(message[2])}
-      {TweetBox(message[3])}
-      {TweetBox(message[4])} */}
-
-      {tweet.forEach((value, key) => {
-        {TweetBox(tweet.get(key))}
-        
-      })}
-
-      {TweetBox(tweet.get("m0"))}
-      {TweetBox(tweet.get("m1"))}
-      {TweetBox(tweet.get("m2"))}
-      {TweetBox(tweet.get("m3"))}
-      {TweetBox(tweet.get("m4"))}
+      {/* TODO: iterate through array to render different tweet messages */}
+      {messages.map(({message}, index) => (
+                  <TweetBox
+                    id={`message-${index}`}
+                    message={message}
+                  />
+                ))}
 
       {/* {
         <UiTable
