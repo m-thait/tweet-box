@@ -146,15 +146,14 @@ export const Table = () => {
       )} */}
 
       {/* TODO: Render a tweet message that looks exactly like the one provided */}
-      {TweetBox(messages[0])}
+      {/* {TweetBox(messages[0])} */}
 
       {/* TODO: Iterate through array to render different tweet messages */}
-      {/* {messages.map(({message}, index) => (
+      {messages.map(({message}) => (
                   <TweetBox
-                    id={`message-${index}`}
                     message={message}
                   />
-                ))} */}
+                ))}
 
       {/* TODO: Use sample API to fetch random data for messages */}
       
