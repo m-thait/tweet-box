@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import { Table as UiTable } from "@moodys/mdc-table.table";
 import { ColumnMenuTab, GetRowIdParams } from "ag-grid-community";
 import { getValueByDotSyntax } from "@moodys/mdc-table.utils.string";
@@ -28,10 +28,14 @@ import { excelExportParams } from "./Table.constants";
 import { FooterBody } from "./components/FooterBody";
 
 // practice
-import { TweetBox } from "./TweetBox";
+import { TweetBox, Tweet } from "./TweetBox";
 
 /* eslint-disable complexity */
 export const Table = () => {
+
+  // create var for fetching data
+  const [tweets, setTweets] = useState<Tweet[]>([]);
+
   const pagination = useAppSelector(getPagination);
   const { columnDefs } = useGetColumnDefs();
   const {
@@ -113,8 +117,7 @@ export const Table = () => {
       />
     );
   }
-
-  // array
+  
   const messages: any[] = [{
     message: "Hello"
   }, {
@@ -126,8 +129,28 @@ export const Table = () => {
   }, {
     message: "OMG"
   }
-  
 ]
+
+  // fetch all the titles of sample data and store in array
+  useEffect(() => {
+    const fetchData = async () => {
+        try {
+          const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+          if (response.ok) {
+            const data = await response.json();
+            const titles: Tweet[] = data.map((tweet: { title: string; }) => ({message: tweet.title}));
+            setTweets(titles)
+          } else {
+            console.error("Failed to fetch data");
+          }
+        } catch (error) {
+          console.error("Error fetching data")
+        }
+      };
+
+      fetchData();
+    }, []);
+
 
   return userType != EsgUserType.ESG_NONE ? (
     <>
@@ -149,15 +172,19 @@ export const Table = () => {
       {/* {TweetBox(messages[0])} */}
 
       {/* TODO: Iterate through array to render different tweet messages */}
-      {messages.map(({message}) => (
+      {/* {messages.map(({message}) => (
                   <TweetBox
                     message={message}
                   />
-                ))}
+                ))} */}
 
-      {/* TODO: Use sample API to fetch random data for messages */}
-      
-
+      {/* TODO: Use sample API to fetch data and use its title for tweet */}
+      {tweets.map((tweet) => (
+        <TweetBox
+        tweet={tweet}
+        />
+      ))}
+        
       {/* {
         <UiTable
           icons={icons}

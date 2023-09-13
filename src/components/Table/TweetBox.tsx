@@ -1,19 +1,21 @@
-import { FC } from "react";
+import { FC} from "react";
 import styles from "./TweetBox.module.scss";
 import { Box } from "@mui/material";
 
-export const TweetBox: FC<{ message: string }> = ({
-  message
-}) => {
-// export const TweetBox = (message: string | undefined) => {
+export interface Tweet {
+  message: string
+}
+
+export const TweetBox: FC<{tweet: Tweet}> = ({tweet:{message}}) => { // destructure value of Tweet
   // console.log(id)
+// export const TweetBox = () => {
   return (
     <Box className={styles.container}>
-    {/* <Box className={styles.container}> */}
       <Box className={styles.whitebox}>
         <Box className={styles.tweet}>
           {/* <p> What's happening? </p> */}
           {message}
+          {/* <span id="title"></span> */}
         </Box>
         <Box className={styles.privacy}>
           <i className="fa-solid fa-globe-asia"></i>
