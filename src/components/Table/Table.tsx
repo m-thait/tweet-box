@@ -33,7 +33,6 @@ import { TweetBox, Tweet } from "./TweetBox";
 /* eslint-disable complexity */
 export const Table = () => {
 
-  // create var for fetching data
   const [tweets, setTweets] = useState<Tweet[]>([]);
 
   const pagination = useAppSelector(getPagination);
@@ -138,7 +137,8 @@ export const Table = () => {
           const response = await fetch('https://jsonplaceholder.typicode.com/posts');
           if (response.ok) {
             const data = await response.json();
-            const titles: Tweet[] = data.map((tweet: { title: string; }) => ({message: tweet.title}));
+            const titles: Tweet[] = data.map((tweet: { title: string; }) => (
+                                    {message: tweet.title}));
             setTweets(titles)
           } else {
             console.error("Failed to fetch data");

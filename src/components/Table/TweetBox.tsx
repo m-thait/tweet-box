@@ -6,7 +6,7 @@ export interface Tweet {
   message: string
 }
 
-export const TweetBox: FC<{tweet: Tweet}> = ({tweet:{message}}) => { // destructure value of Tweet
+export const TweetBox: FC<{tweet: Tweet}> = ({tweet:{message}}) => { // destructor value of Tweet
   // console.log(id)
 // export const TweetBox = () => {
   return (
